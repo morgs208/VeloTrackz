@@ -1,0 +1,39 @@
+<div class="space-y-8">
+  <%= link_to "← Back to Trail", @trail, class: "text-purple-900 font-bold hover:underline" %>
+  
+  <div class="bg-gradient-to-r from-lime-400 to-cyan-400 border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mt-4">
+    <h1 class="text-4xl font-black text-purple-900 uppercase drop-shadow-[3px_3px_0px_rgba(255,255,255,1)]">
+      🎵 Create Playlist
+    </h1>
+    <p class="text-purple-900 font-bold mt-2">
+      For <%= @trail.name %>
+    </p>
+  </div>
+
+  <%= form_with model: [@trail, @playlist], class: "space-y-6" do |form| %>
+    <% if @playlist.errors.any? %>
+      <div class="bg-red-500 border-4 border-black p-4 text-white font-bold">
+        <h2 class="text-xl mb-2">❌ Errors:</h2>
+        <ul class="list-disc list-inside">
+          <% @playlist.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :name, "Playlist Name", class: "block text-2xl font-black text-purple-900 uppercase mb-2" %>
+      <%= form.text_field :name, 
+          placeholder: "e.g., Uphill Grind, Downhill Flow", 
+          class: "w-full p-4 border-4 border-black text-xl font-bold focus:outline-none focus:ring-4 focus:ring-lime-400",
+          autofocus: true %>
+    </div>
+
+    <div class="flex gap-4">
+      <%= form.submit "Create Playlist", class: "px-8 py-4 bg-lime-400 text-purple-900 text-xl font-black uppercase border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:scale-105 transition-transform cursor-pointer" %>
+      
+      <%= link_to "Cancel", @trail, class: "px-8 py-4 bg-gray-300 text-gray-700 text-xl font-black uppercase border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:scale-105 transition-transform inline-block" %>
+    </div>
+  <% end %>
+</div>

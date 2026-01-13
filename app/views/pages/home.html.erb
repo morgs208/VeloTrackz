@@ -1,0 +1,19 @@
+<div class="flex flex-col items-center justify-center min-h-[40vh]">
+  
+  <div class="text-center mb-12">
+    <p class="text-2xl md:text-3xl font-bold bg-white inline-block px-4 py-2 transform -skew-x-12 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+      SHRED THE GNAR. <span class="text-fuchsia-600">SYNC THE TUNES.</span>
+    </p>
+  </div>
+
+  <%= link_to trails_path, 
+      class: "group relative inline-block text-2xl font-black uppercase tracking-widest" do %>
+    
+    <span class="absolute inset-0 w-full h-full mt-2 ml-2 transition-all duration-200 ease-out bg-black rounded-lg group-hover:mt-0 group-hover:ml-0"></span>
+    <span class="absolute inset-0 w-full h-full bg-lime-400 rounded-lg border-4 border-black"></span>
+    <span class="relative block px-8 py-4 bg-lime-400 border-4 border-black rounded-lg hover:bg-fuchsia-500 hover:text-white transition-colors duration-200">
+      ENTER THE SHRED ZONE &rarr;
+    </span>
+  <% end %>
+
+</div>

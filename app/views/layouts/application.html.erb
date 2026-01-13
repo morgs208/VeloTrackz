@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Velo Trackz" %></title>
+    <title>VeloTrackz</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Velo Trackz">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; background: linear-gradient(135deg, #FDE047 0%, #EC4899 50%, #22D3EE 100%); font-family: sans-serif; margin: 0;">
+
+    <header style="width: 100%; display: flex; justify-content: center; padding-top: 2rem; padding-bottom: 2rem;">
+      
+      <div style="width: 700px; height: 500px; margin-left: auto; margin-right: auto; border: 4px solid black; overflow: hidden; background-color: #22D3EE; box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);">
+        
+        <%= link_to root_path, style: "display: block; width: 100%; height: 100%;" do %>
+          <%= image_tag "biker_dude.png", 
+              style: "width: 100%; height: 100%; object-fit: cover;",
+              class: "hover:scale-110 transition-transform duration-300" %>
+        <% end %>
+        
+      </div>
+
+    </header>
+
+   <div class="animate-marquee" style="color: white; font-family: monospace; font-size: 20px; font-weight: bold; white-space: nowrap; overflow: hidden; text-align: center;">
+        🎸 Shred Trails. Rock Playlists. 🤘
+</div>
+
+<main style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 1rem;">
+  
+  <div style="background: rgba(255,255,255,0.9); border: 4px solid black; box-shadow: 8px 8px 0px 0px rgba(0,0,0,1); padding: 2rem; max-width: 900px; width: 100%;">
+    <% if notice.present? %>
+      <div class="bg-lime-400 border-4 border-black p-4 mb-6 font-bold text-purple-900">
+        <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if alert.present? %>
+      <div class="bg-red-500 border-4 border-black p-4 mb-6 font-bold text-white">
+        <%= alert %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
+  </div>
+
+    <footer style="margin-top: auto; width: 100%; background: black; padding: 0.5rem 0; border-top: 4px solid #22D3EE;">
+      <div class="animate-marquee" style="color: white; font-family: monospace; white-space: nowrap; overflow: hidden; text-align: center;">
+        ★ EST. 2026 ★ KEEP IT RADICAL ★ NO BRAKES ★ HOTWIRE POWERED ★ RAILS 8 ★ VELOTRACKZ ★
+      </div>
+    </footer>
+
   </body>
 </html>
